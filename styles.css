@@ -270,6 +270,11 @@ input[type="range"] {
   color: var(--brand);
 }
 
+.chip-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .result {
   margin-top: 14px;
   background: #f8fafc;

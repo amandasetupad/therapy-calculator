@@ -18,12 +18,16 @@ const shareOutputEl = document.getElementById("share-output");
 const selectedGenderLabelEl = document.getElementById("selected-gender-label");
 
 const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
+const isQuestionsPage = window.location.pathname.endsWith("/questions.html") || window.location.pathname.endsWith("questions.html");
 
 let selectedSlug = "female";
 let answers = {};
 const urlGender = new URLSearchParams(window.location.search).get("gender");
 if (urlGender && Object.prototype.hasOwnProperty.call(GENDER_KEY, urlGender)) {
   selectedSlug = urlGender;
+}
+if (isQuestionsPage && (!urlGender || !Object.prototype.hasOwnProperty.call(GENDER_KEY, urlGender))) {
+  window.location.href = "./index.html";
 }
 
 function formatUsd(value) {
@@ -385,6 +389,7 @@ chips.forEach((chip) => {
     chip.classList.remove("active");
   }
   chip.addEventListener("click", () => {
+    if (isQuestionsPage) return;
     chips.forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     selectedSlug = chip.dataset.gender || "female";
@@ -416,6 +421,12 @@ if (quizFieldsEl) {
   renderQuiz();
   if (selectedGenderLabelEl) {
     selectedGenderLabelEl.textContent = GENDER_KEY[selectedSlug];
+  }
+  if (isQuestionsPage) {
+    document.querySelectorAll(".chips .chip").forEach((el) => {
+      el.setAttribute("aria-disabled", "true");
+      el.classList.add("chip-disabled");
+    });
   }
 }
 
