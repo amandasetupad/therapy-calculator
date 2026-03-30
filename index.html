@@ -60,21 +60,51 @@
                 </div>
               </fieldset>
 
-              <label>
-                Sessions per month
-                <input id="sessions" type="range" min="1" max="12" value="4" />
-                <small><span id="sessions-value">4</span> sessions</small>
-              </label>
+              <div class="test-box">
+                <p class="test-title">Gender-specific test</p>
+                <div class="gender-test active" data-test="male">
+                  <label>
+                    Cigarettes per week
+                    <input id="male-cigarettes" type="range" min="0" max="20" value="4" />
+                    <small><span id="male-cigarettes-value">4</span> / week</small>
+                  </label>
+                  <label>
+                    Blue-circle eye level
+                    <input id="male-eyes" type="range" min="1" max="10" value="5" />
+                    <small><span id="male-eyes-value">5</span> / 10</small>
+                  </label>
+                </div>
+
+                <div class="gender-test" data-test="female">
+                  <label>
+                    Love drama level
+                    <input id="female-love" type="range" min="1" max="10" value="6" />
+                    <small><span id="female-love-value">6</span> / 10</small>
+                  </label>
+                  <label>
+                    Heart-eye intensity
+                    <input id="female-hearts" type="range" min="1" max="10" value="7" />
+                    <small><span id="female-hearts-value">7</span> / 10</small>
+                  </label>
+                </div>
+
+                <div class="gender-test" data-test="other">
+                  <label>
+                    Money mindset
+                    <input id="other-money" type="range" min="1" max="10" value="6" />
+                    <small><span id="other-money-value">6</span> / 10</small>
+                  </label>
+                  <label>
+                    Dollar-sign sparkle
+                    <input id="other-dollar" type="range" min="1" max="10" value="6" />
+                    <small><span id="other-dollar-value">6</span> / 10</small>
+                  </label>
+                </div>
+              </div>
 
               <label>
                 Cost per session (USD)
                 <input id="price" type="number" min="20" max="500" value="120" />
-              </label>
-
-              <label>
-                Mood intensity
-                <input id="mood" type="range" min="1" max="10" value="5" />
-                <small>Level <span id="mood-value">5</span> / 10</small>
               </label>
             </div>
 

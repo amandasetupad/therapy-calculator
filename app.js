@@ -1,9 +1,5 @@
 const chips = document.querySelectorAll(".chip");
-const sessionsEl = document.getElementById("sessions");
 const priceEl = document.getElementById("price");
-const moodEl = document.getElementById("mood");
-const sessionsValueEl = document.getElementById("sessions-value");
-const moodValueEl = document.getElementById("mood-value");
 const annualBillEl = document.getElementById("annual-bill");
 const noteEl = document.getElementById("result-note");
 
@@ -15,6 +11,21 @@ const propEl = document.getElementById("prop");
 const faceCaptionEl = document.getElementById("face-caption");
 
 let selectedGender = "male";
+const testPanels = document.querySelectorAll(".gender-test");
+
+const maleCigsEl = document.getElementById("male-cigarettes");
+const maleEyesEl = document.getElementById("male-eyes");
+const femaleLoveEl = document.getElementById("female-love");
+const femaleHeartsEl = document.getElementById("female-hearts");
+const otherMoneyEl = document.getElementById("other-money");
+const otherDollarEl = document.getElementById("other-dollar");
+
+const maleCigsValueEl = document.getElementById("male-cigarettes-value");
+const maleEyesValueEl = document.getElementById("male-eyes-value");
+const femaleLoveValueEl = document.getElementById("female-love-value");
+const femaleHeartsValueEl = document.getElementById("female-hearts-value");
+const otherMoneyValueEl = document.getElementById("other-money-value");
+const otherDollarValueEl = document.getElementById("other-dollar-value");
 
 function formatUsd(value) {
   return new Intl.NumberFormat("en-US", {
@@ -72,23 +83,51 @@ function setFace(gender) {
   }
 }
 
+function setTestPanel(gender) {
+  testPanels.forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.test === gender);
+  });
+}
+
 function updateResult() {
-  const sessions = Number(sessionsEl.value);
   const price = Number(priceEl.value);
-  const mood = Number(moodEl.value);
-  const moodMultiplier = 0.8 + mood * 0.05;
+  let score = 5;
+  let sessions = 4;
+
+  if (selectedGender === "male") {
+    const cigs = Number(maleCigsEl.value);
+    const eyes = Number(maleEyesEl.value);
+    maleCigsValueEl.textContent = String(cigs);
+    maleEyesValueEl.textContent = String(eyes);
+    score = (cigs / 2 + eyes) / 2;
+    sessions = 2 + Math.round(score / 1.8);
+  } else if (selectedGender === "female") {
+    const love = Number(femaleLoveEl.value);
+    const hearts = Number(femaleHeartsEl.value);
+    femaleLoveValueEl.textContent = String(love);
+    femaleHeartsValueEl.textContent = String(hearts);
+    score = (love + hearts) / 2;
+    sessions = 2 + Math.round(score / 1.6);
+  } else {
+    const money = Number(otherMoneyEl.value);
+    const dollar = Number(otherDollarEl.value);
+    otherMoneyValueEl.textContent = String(money);
+    otherDollarValueEl.textContent = String(dollar);
+    score = (money + dollar) / 2;
+    sessions = 2 + Math.round(score / 1.7);
+  }
+
+  const moodMultiplier = 0.9 + score * 0.05;
   const annual = sessions * price * 12 * moodMultiplier;
 
-  sessionsValueEl.textContent = String(sessions);
-  moodValueEl.textContent = String(mood);
   annualBillEl.textContent = formatUsd(annual);
 
-  if (mood <= 3) {
-    noteEl.textContent = "Chill mode: low-intensity emotional weather.";
-  } else if (mood <= 7) {
-    noteEl.textContent = "Balanced mode selected.";
+  if (score <= 4) {
+    noteEl.textContent = "Low-intensity profile detected.";
+  } else if (score <= 7) {
+    noteEl.textContent = "Balanced profile detected.";
   } else {
-    noteEl.textContent = "Spicy mode: dramatic growth arc detected.";
+    noteEl.textContent = "High-intensity profile detected.";
   }
 }
 
@@ -98,13 +137,15 @@ chips.forEach((chip) => {
     chip.classList.add("active");
     selectedGender = chip.dataset.gender || "male";
     setFace(selectedGender);
+    setTestPanel(selectedGender);
     updateResult();
   });
 });
 
-[sessionsEl, priceEl, moodEl].forEach((input) => {
+[maleCigsEl, maleEyesEl, femaleLoveEl, femaleHeartsEl, otherMoneyEl, otherDollarEl, priceEl].forEach((input) => {
   input.addEventListener("input", updateResult);
 });
 
 setFace(selectedGender);
+setTestPanel(selectedGender);
 updateResult();
