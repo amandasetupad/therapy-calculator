@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-24" />
-    <script defer src="./app.js?v=20260330-24"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-25" />
+    <script defer src="./app.js?v=20260330-25"></script>
   </head>
   <body>
     <header class="site-header">
@@ -73,15 +73,33 @@
               <legend class="sr-only">Pick a gender, then start the test</legend>
               <div class="chips gender-chips" role="radiogroup" aria-label="Pick a gender">
                 <button class="chip chip-gender chip-gender--male" data-gender="male" type="button">
-                  <span class="wc-glyph" aria-hidden="true">🚹</span>
+                  <img
+                    class="gender-icon"
+                    src="./assets/gender-icons/male.png"
+                    width="48"
+                    height="48"
+                    alt=""
+                  />
                   <span>Male</span>
                 </button>
                 <button class="chip chip-gender chip-gender--female active" data-gender="female" type="button">
-                  <span class="wc-glyph" aria-hidden="true">🚺</span>
+                  <img
+                    class="gender-icon"
+                    src="./assets/gender-icons/female.png"
+                    width="48"
+                    height="48"
+                    alt=""
+                  />
                   <span>Female</span>
                 </button>
                 <button class="chip chip-gender chip-gender--other" data-gender="other" type="button">
-                  <span class="wc-glyph" aria-hidden="true">🚻</span>
+                  <img
+                    class="gender-icon"
+                    src="./assets/gender-icons/other.png"
+                    width="48"
+                    height="48"
+                    alt=""
+                  />
                   <span>They/Them</span>
                 </button>
               </div>

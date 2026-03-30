@@ -16,7 +16,11 @@ const selectedGenderLabelEl = document.getElementById("selected-gender-label");
 const startTestBtnEl = document.getElementById("start-test-btn");
 
 const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
-const GENDER_WC = { male: "🚹", female: "🚺", other: "🚻" };
+const GENDER_ICON_SRC = {
+  male: "./assets/gender-icons/male.png",
+  female: "./assets/gender-icons/female.png",
+  other: "./assets/gender-icons/other.png"
+};
 const isQuestionsPage = window.location.pathname.endsWith("/questions.html") || window.location.pathname.endsWith("questions.html");
 
 let selectedSlug = "female";
@@ -406,9 +410,12 @@ setFace(selectedSlug);
 if (quizFieldsEl) {
   renderQuiz();
   if (selectedGenderLabelEl) {
-    const glyph = GENDER_WC[selectedSlug] || "";
+    const iconSrc = GENDER_ICON_SRC[selectedSlug] || "";
     const label = GENDER_KEY[selectedSlug] || "";
-    selectedGenderLabelEl.innerHTML = `<span class="selected-profile-row"><span class="wc-glyph" aria-hidden="true">${glyph}</span><span>${label}</span></span>`;
+    const img = iconSrc
+      ? `<img class="gender-icon gender-icon--profile" src="${iconSrc}" width="36" height="36" alt="" />`
+      : "";
+    selectedGenderLabelEl.innerHTML = `<span class="selected-profile-row">${img}<span>${label}</span></span>`;
   }
   if (isQuestionsPage) {
     document.querySelectorAll(".chips .chip").forEach((el) => {
