@@ -1048,12 +1048,20 @@ input[type="range"] {
   gap: 6px;
 }
 
+/* Override global `label { flex-direction: column }` so control + text stay on one line */
 .radio-row {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
   font-size: 0.95rem;
+}
+
+.radio-row input[type="radio"],
+.radio-row input[type="checkbox"] {
+  flex-shrink: 0;
+  margin: 0;
 }
 
 .height-row {

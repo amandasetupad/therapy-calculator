@@ -71,8 +71,9 @@ window.QUESTIONS_BY_GENDER = {
     },
     {
       id: "hobbies",
-      text: "Main hobbies?",
-      type: "select",
+      text: "Main hobbies? (Pick all that apply)",
+      type: "checkboxGroup",
+      minSelections: 1,
       options: ["Anime/Gaming", "Sports", "Partying", "Reading/Learning", "Existential Dread"]
     },
     {

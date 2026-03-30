@@ -364,7 +364,11 @@ function renderQuiz() {
 function validateAnswers(list) {
   for (const q of list) {
     const v = answers[q.id];
-    if (q.type === "checkboxGroup") continue;
+    if (q.type === "checkboxGroup") {
+      const min = q.minSelections != null ? q.minSelections : 0;
+      if (min > 0 && (!Array.isArray(v) || v.length < min)) return q.text;
+      continue;
+    }
     if (v === undefined || v === "" || v === null) return q.text;
     if (q.type === "heightInput" && (!v.value || String(v.value).trim() === "")) return q.text;
   }
