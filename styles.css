@@ -25,6 +25,10 @@ body {
   margin: 0 auto;
 }
 
+.container--narrow {
+  width: min(640px, 92%);
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -216,6 +220,164 @@ body {
 
 .panel {
   padding: 18px;
+}
+
+.gender-pick-section {
+  padding-bottom: 40px;
+}
+
+.gender-pick-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.25rem 1.75rem;
+  border: 0;
+  background: linear-gradient(
+    145deg,
+    #fffbeb 0%,
+    #ecfccb 28%,
+    #e0f2fe 55%,
+    #fce7f3 85%,
+    #fef3c7 100%
+  );
+  box-shadow:
+    0 14px 40px rgba(15, 23, 42, 0.08),
+    0 4px 0 rgba(99, 102, 241, 0.35);
+}
+
+.gender-pick-panel::before,
+.gender-pick-panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gender-pick-panel::before {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.35) 0%, transparent 70%);
+  top: -70px;
+  right: -50px;
+}
+
+.gender-pick-panel::after {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.45) 0%, transparent 70%);
+  bottom: -40px;
+  left: -30px;
+}
+
+.gender-pick-fieldset {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+
+.gender-chips {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  width: 100%;
+}
+
+.chip-gender {
+  border-width: 3px;
+  border-style: solid;
+  padding: 1rem 1.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 999px;
+  min-width: 8.5rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 0 rgba(15, 23, 42, 0.08);
+}
+
+.chip-gender:hover {
+  transform: translateY(-2px);
+}
+
+.chip-gender:active {
+  transform: translateY(1px);
+}
+
+.chip-gender--male {
+  background: #ecfccb;
+  border-color: #a3e635;
+  color: #365314;
+}
+
+.chip-gender--male.active {
+  background: linear-gradient(180deg, #d9f99d 0%, #84cc16 100%);
+  border-color: #4d7c0f;
+  color: #14532d;
+  box-shadow: 0 6px 0 #3f6212;
+}
+
+.chip-gender--female {
+  background: #fce7f3;
+  border-color: #f472b6;
+  color: #831843;
+}
+
+.chip-gender--female.active {
+  background: linear-gradient(180deg, #fbcfe8 0%, #ec4899 100%);
+  border-color: #be185d;
+  color: #500724;
+  box-shadow: 0 6px 0 #9d174d;
+}
+
+.chip-gender--other {
+  background: #fef9c3;
+  border-color: #facc15;
+  color: #713f12;
+}
+
+.chip-gender--other.active {
+  background: linear-gradient(180deg, #fef08a 0%, #eab308 100%);
+  border-color: #ca8a04;
+  color: #422006;
+  box-shadow: 0 6px 0 #854d0e;
+}
+
+.quiz-hint--center {
+  text-align: center;
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-start-test {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  margin: 1.25rem auto 0;
+  padding: 1rem 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(92deg, #ec4899 0%, #a855f7 38%, #6366f1 68%, #22c55e 100%);
+  background-size: 180% 100%;
+  box-shadow:
+    0 8px 0 rgba(79, 70, 229, 0.55),
+    0 14px 24px rgba(236, 72, 153, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-start-test:hover {
+  transform: translateY(-2px);
+}
+
+.btn-start-test:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 3px 0 rgba(79, 70, 229, 0.55),
+    0 8px 16px rgba(236, 72, 153, 0.2);
 }
 
 .grid-2 {
