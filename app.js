@@ -10,7 +10,7 @@ const mouthEl = document.getElementById("mouth");
 const propEl = document.getElementById("prop");
 const faceCaptionEl = document.getElementById("face-caption");
 
-let selectedGender = "male";
+let selectedGender = "female";
 const testPanels = document.querySelectorAll(".gender-test");
 
 const maleCigsEl = document.getElementById("male-cigarettes");
@@ -44,6 +44,14 @@ function setFace(gender) {
   propEl.className = "prop";
   eyeLeftEl.textContent = "";
   eyeRightEl.textContent = "";
+  [eyeLeftEl, eyeRightEl].forEach((eye) => {
+    eye.style.background = "#1f2937";
+    eye.style.color = "";
+    eye.style.fontSize = "";
+    eye.style.display = "";
+    eye.style.placeItems = "";
+  });
+  mouthEl.style.borderBottomColor = "#b91c1c";
 
   if (gender === "male") {
     faceEl.classList.add("face-male");

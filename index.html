@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-3" />
-    <script defer src="./app.js?v=20260330-3"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-4" />
+    <script defer src="./app.js?v=20260330-4"></script>
   </head>
   <body>
     <header class="site-header">
@@ -35,14 +35,14 @@
           </div>
 
           <div class="hero-card" id="character-card">
-            <div class="face face-male" id="face">
+            <div class="face female" id="face">
               <span class="hair"></span>
               <span class="eye left" id="eye-left"></span>
               <span class="eye right" id="eye-right"></span>
               <span class="mouth" id="mouth"></span>
               <span class="prop" id="prop" aria-hidden="true"></span>
             </div>
-            <p class="face-caption" id="face-caption">Male mode: cool eyes + cigarette prop</p>
+            <p class="face-caption sr-only" id="face-caption">Female mode: heart eyes + smile mood</p>
           </div>
         </div>
       </section>
@@ -55,15 +55,15 @@
               <fieldset>
                 <legend>Choose profile</legend>
                 <div class="chips" role="radiogroup" aria-label="Profile">
-                  <button class="chip active" data-gender="male" type="button">Male</button>
-                  <button class="chip" data-gender="female" type="button">Female</button>
+                  <button class="chip" data-gender="male" type="button">Male</button>
+                  <button class="chip active" data-gender="female" type="button">Female</button>
                   <button class="chip" data-gender="other" type="button">They/Them</button>
                 </div>
               </fieldset>
 
               <div class="test-box">
                 <p class="test-title">Gender-specific test</p>
-                <div class="gender-test active" data-test="male">
+                <div class="gender-test" data-test="male">
                   <label>
                     Cigarettes per week
                     <input id="male-cigarettes" type="range" min="0" max="20" value="4" />
@@ -76,7 +76,7 @@
                   </label>
                 </div>
 
-                <div class="gender-test" data-test="female">
+                <div class="gender-test active" data-test="female">
                   <label>
                     Love drama level
                     <input id="female-love" type="range" min="1" max="10" value="6" />
