@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Questions | Therapy Calculator</title>
-    <link rel="stylesheet" href="./styles.css?v=20260330-7" />
-    <script src="./questions-data.js?v=20260330-7"></script>
-    <script defer src="./app.js?v=20260330-7"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-8" />
+    <script src="./questions-data.js?v=20260330-8"></script>
+    <script defer src="./app.js?v=20260330-8"></script>
   </head>
   <body>
     <header class="site-header">
@@ -26,12 +26,9 @@
         <h2>Your Questions</h2>
         <div class="panel">
           <fieldset class="quiz-intro">
-            <legend>Choose profile</legend>
-            <div class="chips" role="radiogroup" aria-label="Profile">
-              <button class="chip" data-gender="male" type="button">Male</button>
-              <button class="chip active" data-gender="female" type="button">Female</button>
-              <button class="chip" data-gender="other" type="button">They/Them</button>
-            </div>
+            <legend>Selected profile</legend>
+            <p id="selected-gender-label" class="quiz-hint">Loading selected gender...</p>
+            <p class="quiz-hint">Gender is locked for this run. Go back to Home to choose a different profile.</p>
           </fieldset>
 
           <div id="quiz-fields" class="quiz-fields" aria-live="polite"></div>

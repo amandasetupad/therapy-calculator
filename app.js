@@ -15,6 +15,7 @@ const generateLinkEl = document.getElementById("generate-link");
 const friendNameEl = document.getElementById("friend-name");
 const friendGuessEl = document.getElementById("friend-guess");
 const shareOutputEl = document.getElementById("share-output");
+const selectedGenderLabelEl = document.getElementById("selected-gender-label");
 
 const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
 
@@ -195,7 +196,19 @@ function renderImageGrid(q) {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "image-option";
-    btn.innerHTML = `<img src="${escape(opt.img)}" alt="" loading="lazy" /><span>${escape(opt.label || opt.value)}</span>`;
+    const label = opt.label || opt.value;
+    const fallback = `data:image/svg+xml;utf8,${encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'>
+        <rect width='100%' height='100%' fill='#eef2ff'/>
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#4f46e5' font-family='Arial' font-size='18'>${String(label).slice(0, 16)}</text>
+      </svg>`
+    )}`;
+    const src = opt.img ? escape(opt.img) : fallback;
+    btn.innerHTML = `<img src="${src}" alt="${escape(label)}" loading="lazy" referrerpolicy="no-referrer" /><span>${escape(label)}</span>`;
+    const imgEl = btn.querySelector("img");
+    imgEl.addEventListener("error", () => {
+      imgEl.src = fallback;
+    });
     btn.addEventListener("click", () => {
       grid.querySelectorAll(".image-option").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
@@ -237,7 +250,19 @@ function renderSliderWithImages(q) {
   wrap.className = "quiz-field";
   const rowImg = document.createElement("div");
   rowImg.className = "slider-images-row";
-  rowImg.innerHTML = `<img src="${escape(q.minImageSrc)}" alt="" class="slider-thumb-img" /><img src="${escape(q.maxImageSrc)}" alt="" class="slider-thumb-img" />`;
+  const mkFallback = (text) =>
+    `data:image/svg+xml;utf8,${encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'>
+        <rect width='100%' height='100%' fill='#f3f4f6'/>
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#374151' font-family='Arial' font-size='14'>${text}</text>
+      </svg>`
+    )}`;
+  const minSrc = q.minImageSrc ? escape(q.minImageSrc) : mkFallback("min");
+  const maxSrc = q.maxImageSrc ? escape(q.maxImageSrc) : mkFallback("max");
+  rowImg.innerHTML = `<img src="${minSrc}" alt="min" class="slider-thumb-img" referrerpolicy="no-referrer" /><img src="${maxSrc}" alt="max" class="slider-thumb-img" referrerpolicy="no-referrer" />`;
+  const sliderImgs = rowImg.querySelectorAll("img");
+  if (sliderImgs[0]) sliderImgs[0].addEventListener("error", () => { sliderImgs[0].src = mkFallback("min"); });
+  if (sliderImgs[1]) sliderImgs[1].addEventListener("error", () => { sliderImgs[1].src = mkFallback("max"); });
   const lab = document.createElement("span");
   lab.className = "quiz-label";
   lab.textContent = q.text;
@@ -387,7 +412,12 @@ if (revealBillEl) {
 }
 
 setFace(selectedSlug);
-if (quizFieldsEl) renderQuiz();
+if (quizFieldsEl) {
+  renderQuiz();
+  if (selectedGenderLabelEl) {
+    selectedGenderLabelEl.textContent = GENDER_KEY[selectedSlug];
+  }
+}
 
 if (generateLinkEl && friendNameEl && friendGuessEl && shareOutputEl) {
   generateLinkEl.addEventListener("click", () => {
