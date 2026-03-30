@@ -116,8 +116,8 @@ window.QUESTIONS_BY_GENDER = {
       min: 0,
       max: 7,
       defaultValue: 1,
-      minImageSrc: "",
-      maxImageSrc: ""
+      minImageSrc: "./assets/breakups-female/min.png",
+      maxImageSrc: "./assets/breakups-female/max.png"
     },
     {
       id: "emotionalBaggageFemale",
