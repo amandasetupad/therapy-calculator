@@ -4,7 +4,18 @@
   const textBox = document.getElementById("text");
   const billLine = document.getElementById("reveal-bill-line");
   const countdown = document.querySelector(".ml4");
-  const formatted = sessionStorage.getItem("therapyRevealFormatted");
+  let formatted = sessionStorage.getItem("therapyRevealFormatted");
+  const amountRaw = sessionStorage.getItem("therapyRevealAmount");
+  if (!formatted && amountRaw != null && amountRaw !== "") {
+    const n = parseInt(amountRaw, 10);
+    if (!Number.isNaN(n)) {
+      formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(n);
+    }
+  }
 
   function fillBillLine(amountText) {
     billLine.textContent = "";

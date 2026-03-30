@@ -66,12 +66,26 @@ function hashString(s) {
   return Math.abs(h);
 }
 
+/** Stable JSON so the same logical answers always yield the same hash. */
+function stableAnswerPayload(ans) {
+  if (!ans || typeof ans !== "object") return "{}";
+  const keys = Object.keys(ans).sort();
+  const out = {};
+  for (const k of keys) {
+    let v = ans[k];
+    if (Array.isArray(v)) v = [...v].map(String).sort();
+    out[k] = v;
+  }
+  return JSON.stringify(out);
+}
+
+/** Same profile + same answers → same dollar amount (no randomness). */
 function computeBill(genderKey, ans) {
-  const base = hashString(genderKey + JSON.stringify(ans));
-  const lo = 2800 + (base % 9000);
-  const hi = lo + 4000 + (base % 12000);
-  const jitter = Math.floor(Math.random() * (hi - lo));
-  return lo + jitter;
+  const payload = `${genderKey}:${stableAnswerPayload(ans)}`;
+  const base = hashString(payload);
+  const minUsd = 2800;
+  const span = 18500;
+  return minUsd + (base % span);
 }
 
 function setAnswer(id, value) {
@@ -397,6 +411,17 @@ chips.forEach((chip) => {
   });
 });
 
+if (revealBillEl && isQuestionsPage) {
+  revealBillEl.disabled = false;
+  revealBillEl.textContent = "Reveal my therapy bill";
+  window.addEventListener("pageshow", (ev) => {
+    if (ev.persisted && revealBillEl) {
+      revealBillEl.disabled = false;
+      revealBillEl.textContent = "Reveal my therapy bill";
+    }
+  });
+}
+
 if (revealBillEl) {
   revealBillEl.addEventListener("click", () => {
     const list = getQuestions();
@@ -406,13 +431,19 @@ if (revealBillEl) {
       return;
     }
     const gk = GENDER_KEY[selectedSlug];
-    const bill = formatUsd(computeBill(gk, answers));
+    const amount = computeBill(gk, answers);
+    const formatted = formatUsd(amount);
     try {
-      sessionStorage.setItem("therapyRevealFormatted", bill);
+      sessionStorage.setItem("therapyRevealAmount", String(amount));
+      sessionStorage.setItem("therapyRevealFormatted", formatted);
+      sessionStorage.setItem("therapyRevealSig", hashString(gk + stableAnswerPayload(answers)).toString());
     } catch {
       /* ignore quota / private mode */
     }
-    window.location.href = "./reveal.html";
+    revealBillEl.disabled = true;
+    revealBillEl.textContent = "Opening celebration…";
+    const target = new URL("reveal.html", window.location.href).href;
+    window.location.assign(target);
   });
 }
 
