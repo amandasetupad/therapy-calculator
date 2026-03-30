@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-15" />
-    <script defer src="./app.js?v=20260330-15"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-16" />
+    <script defer src="./app.js?v=20260330-16"></script>
   </head>
   <body>
     <header class="site-header">
@@ -54,9 +54,18 @@
             <fieldset class="quiz-intro gender-pick-fieldset">
               <legend class="sr-only">Pick a gender, then start the test</legend>
               <div class="chips gender-chips" role="radiogroup" aria-label="Pick a gender">
-                <button class="chip chip-gender chip-gender--male" data-gender="male" type="button">Male</button>
-                <button class="chip chip-gender chip-gender--female active" data-gender="female" type="button">Female</button>
-                <button class="chip chip-gender chip-gender--other" data-gender="other" type="button">They/Them</button>
+                <button class="chip chip-gender chip-gender--male" data-gender="male" type="button">
+                  <span class="wc-glyph" aria-hidden="true">🚹</span>
+                  <span>Male</span>
+                </button>
+                <button class="chip chip-gender chip-gender--female active" data-gender="female" type="button">
+                  <span class="wc-glyph" aria-hidden="true">🚺</span>
+                  <span>Female</span>
+                </button>
+                <button class="chip chip-gender chip-gender--other" data-gender="other" type="button">
+                  <span class="wc-glyph" aria-hidden="true">🚻</span>
+                  <span>They/Them</span>
+                </button>
               </div>
               <p class="quiz-hint quiz-hint--center">
                 First page is only selection. Your full questionnaire appears on the next page.

@@ -19,6 +19,7 @@ const selectedGenderLabelEl = document.getElementById("selected-gender-label");
 const startTestBtnEl = document.getElementById("start-test-btn");
 
 const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
+const GENDER_WC = { male: "🚹", female: "🚺", other: "🚻" };
 const isQuestionsPage = window.location.pathname.endsWith("/questions.html") || window.location.pathname.endsWith("questions.html");
 
 let selectedSlug = "female";
@@ -467,7 +468,9 @@ setFace(selectedSlug);
 if (quizFieldsEl) {
   renderQuiz();
   if (selectedGenderLabelEl) {
-    selectedGenderLabelEl.textContent = GENDER_KEY[selectedSlug];
+    const glyph = GENDER_WC[selectedSlug] || "";
+    const label = GENDER_KEY[selectedSlug] || "";
+    selectedGenderLabelEl.innerHTML = `<span class="selected-profile-row"><span class="wc-glyph" aria-hidden="true">${glyph}</span><span>${label}</span></span>`;
   }
   if (isQuestionsPage) {
     document.querySelectorAll(".chips .chip").forEach((el) => {

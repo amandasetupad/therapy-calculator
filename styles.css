@@ -496,6 +496,10 @@ body {
 }
 
 .chip-gender {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   border-width: 3px;
   border-style: solid;
   padding: 1rem 1.75rem;
@@ -506,6 +510,25 @@ body {
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   box-shadow: 0 4px 0 rgba(15, 23, 42, 0.08);
+}
+
+.wc-glyph {
+  font-size: 1.35rem;
+  line-height: 1;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.selected-profile-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.selected-profile-row .wc-glyph {
+  font-size: 1.5rem;
 }
 
 .chip-gender:hover {
