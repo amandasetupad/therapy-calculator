@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-2" />
-    <script defer src="./app.js?v=20260330-2"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-3" />
+    <script defer src="./app.js?v=20260330-3"></script>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav">
         <a class="logo" href="./">Therapy Calculator</a>
         <nav class="nav-links">
-          <a href="#calculator">Calculator</a>
-          <a href="#why">Why Therapy</a>
-          <a href="#quotes">Quotes</a>
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About Us</a>
+          <a href="./contact.html">Contact Us</a>
+          <a href="./privacy-policy.html">Privacy Policy</a>
         </nav>
       </div>
     </header>
@@ -137,6 +138,55 @@
             <blockquote>"My therapist says I avoid commitment. I call it agile life planning."</blockquote>
             <blockquote>"I explained my dream for an hour, then realized I just needed water and sleep."</blockquote>
             <blockquote>"Working on boundaries is hard, but at least now I can say no politely."</blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="share" class="section alt">
+        <div class="container">
+          <h2>Let Me Guess Your Friend's Therapy Bill</h2>
+          <div class="panel">
+            <div class="grid-2">
+              <label>
+                Friend's name
+                <input id="friend-name" type="text" placeholder="Enter friend name" />
+              </label>
+              <label>
+                Your guess (USD)
+                <input id="friend-guess" type="number" min="100" max="200000" value="7500" />
+              </label>
+            </div>
+            <button id="generate-link" class="btn btn-primary btn-inline" type="button">Generate Share Link</button>
+            <p class="share-output" id="share-output"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="serious" class="section">
+        <div class="container">
+          <h2>Okay, But Seriously Though...</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>A Brief History of Healing</h3>
+              <p>
+                Modern psychotherapy grew rapidly in the late 19th and 20th centuries, evolving into
+                many approaches focused on practical emotional well-being.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Who's Talking About It?</h3>
+              <p>
+                Therapy usage varies by culture and access, but acceptance continues to grow globally as
+                more people treat mental health as a core part of overall health.
+              </p>
+            </article>
+            <article class="card">
+              <h3>The Investment in You</h3>
+              <p>
+                Session prices differ by location and therapist type. Many people view it as an
+                investment in long-term stability, relationships, and quality of life.
+              </p>
+            </article>
           </div>
         </div>
       </section>

@@ -26,6 +26,10 @@ const femaleLoveValueEl = document.getElementById("female-love-value");
 const femaleHeartsValueEl = document.getElementById("female-hearts-value");
 const otherMoneyValueEl = document.getElementById("other-money-value");
 const otherDollarValueEl = document.getElementById("other-dollar-value");
+const generateLinkEl = document.getElementById("generate-link");
+const friendNameEl = document.getElementById("friend-name");
+const friendGuessEl = document.getElementById("friend-guess");
+const shareOutputEl = document.getElementById("share-output");
 
 function formatUsd(value) {
   return new Intl.NumberFormat("en-US", {
@@ -149,3 +153,12 @@ chips.forEach((chip) => {
 setFace(selectedGender);
 setTestPanel(selectedGender);
 updateResult();
+
+if (generateLinkEl && friendNameEl && friendGuessEl && shareOutputEl) {
+  generateLinkEl.addEventListener("click", () => {
+    const name = encodeURIComponent(friendNameEl.value.trim() || "friend");
+    const guess = encodeURIComponent(friendGuessEl.value || "7500");
+    const url = `${window.location.origin}${window.location.pathname}?friend=${name}&guess=${guess}`;
+    shareOutputEl.innerHTML = `Share this link: <a href="${url}">${url}</a>`;
+  });
+}
