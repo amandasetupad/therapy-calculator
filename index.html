@@ -1,14 +1,121 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Therapy Calculator</title>
-		<script type="module" crossorigin src="./assets/index-be93b4f0.js"></script>
-		<link rel="stylesheet" href="./assets/index-39840899.css">
-	</head>
-	<body>
-		<div id="root"></div>
-		
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Therapy Calculator</title>
+    <meta name="description" content="A playful therapy cost calculator with animated character moods." />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="./">Therapy Calculator</a>
+        <nav class="nav-links">
+          <a href="#calculator">Calculator</a>
+          <a href="#why">Why Therapy</a>
+          <a href="#quotes">Quotes</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">For entertainment only</p>
+            <h1>What Is Your Hilariously Inflated Therapy Bill?</h1>
+            <p class="lead">
+              Choose a profile, set a mood, and get a playful estimate of annual therapy cost.
+              Modern look, cleaner layout, and fixed character animation.
+            </p>
+            <a class="btn btn-primary" href="#calculator">Try Calculator</a>
+          </div>
+
+          <div class="hero-card" id="character-card">
+            <div class="face face-male" id="face">
+              <span class="hair"></span>
+              <span class="eye left" id="eye-left"></span>
+              <span class="eye right" id="eye-right"></span>
+              <span class="mouth" id="mouth"></span>
+              <span class="prop" id="prop" aria-hidden="true"></span>
+            </div>
+            <p class="face-caption" id="face-caption">Male mode: cool eyes + cigarette prop</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="calculator" class="section">
+        <div class="container">
+          <h2>Calculator</h2>
+          <div class="panel">
+            <div class="grid-2">
+              <fieldset>
+                <legend>Choose profile</legend>
+                <div class="chips" role="radiogroup" aria-label="Profile">
+                  <button class="chip active" data-gender="male" type="button">Male</button>
+                  <button class="chip" data-gender="female" type="button">Female</button>
+                  <button class="chip" data-gender="other" type="button">They/Them</button>
+                </div>
+              </fieldset>
+
+              <label>
+                Sessions per month
+                <input id="sessions" type="range" min="1" max="12" value="4" />
+                <small><span id="sessions-value">4</span> sessions</small>
+              </label>
+
+              <label>
+                Cost per session (USD)
+                <input id="price" type="number" min="20" max="500" value="120" />
+              </label>
+
+              <label>
+                Mood intensity
+                <input id="mood" type="range" min="1" max="10" value="5" />
+                <small>Level <span id="mood-value">5</span> / 10</small>
+              </label>
+            </div>
+
+            <div class="result">
+              <div>
+                <p class="result-label">Estimated yearly bill</p>
+                <p class="result-value" id="annual-bill">$5,760</p>
+              </div>
+              <p id="result-note" class="result-note">Balanced mood mode selected.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section alt">
+        <div class="container">
+          <h2>Reasons Your Brain Might Need a Tune-Up</h2>
+          <div class="cards">
+            <article class="card"><h3>Debug Your Brain-OS</h3><p>Therapy can help untangle loops, reduce overwhelm, and improve clarity.</p></article>
+            <article class="card"><h3>Emotional Stunt Training</h3><p>Build practical skills to handle stress without dramatic crashes.</p></article>
+            <article class="card"><h3>Resting Existential Face</h3><p>Learn healthier ways to process life, relationships, and big emotions.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="quotes" class="section">
+        <div class="container">
+          <h2>Overheard in (Imaginary) Therapy</h2>
+          <div class="quotes">
+            <blockquote>"My therapist says I avoid commitment. I call it agile life planning."</blockquote>
+            <blockquote>"I explained my dream for an hour, then realized I just needed water and sleep."</blockquote>
+            <blockquote>"Working on boundaries is hard, but at least now I can say no politely."</blockquote>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>This is a playful calculator, not medical advice.</p>
+      </div>
+    </footer>
+  </body>
 </html>
