@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Questions | Therapy Calculator</title>
-    <link rel="stylesheet" href="./styles.css?v=20260330-29" />
-    <script src="./questions-data.js?v=20260330-29"></script>
-    <script defer src="./app.js?v=20260330-29"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-30" />
+    <script src="./questions-data.js?v=20260330-30"></script>
+    <script defer src="./app.js?v=20260330-30"></script>
   </head>
   <body>
     <header class="site-header">
@@ -33,14 +33,10 @@
 
           <div id="quiz-fields" class="quiz-fields" aria-live="polite"></div>
           <button id="reveal-bill" class="btn btn-primary btn-inline" type="button">Reveal my therapy bill</button>
-
-          <div class="result result-stack">
-            <div>
-              <p class="result-label">Your (totally scientific) bill</p>
-              <p class="result-value" id="annual-bill">—</p>
-            </div>
-            <p id="result-note" class="result-note">Answer every question, then reveal.</p>
-          </div>
+          <p id="result-note" class="result-note quiz-hint--center">
+            Answer everything, then tap reveal — you’ll get a countdown, confetti, and a celebratory therapist moment
+            (still not real pricing).
+          </p>
         </div>
       </div>
     </main>

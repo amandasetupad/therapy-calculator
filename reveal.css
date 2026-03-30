@@ -1,0 +1,581 @@
+/* Therapy bill celebration — adapted from countdown + twerk character layout */
+
+.reveal-page {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #3730a3 0%, #1e1b4b 45%, #0f172a 100%);
+  overflow: hidden;
+  font-family: Montserrat, system-ui, sans-serif;
+  --thera-light: #6366f1;
+  --thera-dark: #4338ca;
+  --light-black: #1e1b4b;
+  --dark-black: #0f172a;
+  --light-white: #f8fafc;
+  --dark-white: #e2e8f0;
+  --white-skin: #ffccb0;
+}
+
+.reveal-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.reveal-skip {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 50;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(248, 250, 252, 0.85);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.45);
+  pointer-events: auto;
+}
+
+.reveal-skip:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+.reveal-actions {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.reveal-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.reveal-btn:hover {
+  filter: brightness(1.06);
+}
+
+#text,
+#shadow,
+#bg,
+#head,
+#beard,
+#hat,
+#boots1,
+#boots2,
+.twerk-eye,
+.ml4 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+#text {
+  text-align: center;
+  top: calc(50% - min(220px, 28vh));
+  display: none;
+  z-index: 20;
+  pointer-events: none;
+  max-width: min(92vw, 420px);
+}
+
+#reveal-bill-line {
+  font-family: Cookie, cursive;
+  font-size: clamp(2rem, 8vw, 3rem);
+  color: #ffffff;
+  animation: reveal-glow 3.5s ease-in-out infinite alternate;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.reveal-sub {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 10px 0 0;
+}
+
+#shadow {
+  top: calc(50% + 160px);
+  width: 200px;
+  height: 80px;
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 100%;
+  z-index: 0;
+}
+
+#bg {
+  height: 400px;
+  width: 400px;
+  max-width: 90vw;
+  background: transparent;
+  border-radius: 20px;
+  z-index: 0;
+}
+
+#head {
+  width: 60px;
+  height: 60px;
+  background: var(--white-skin);
+  top: calc(50% - 80px);
+  border-radius: 0 0 50% 50%;
+  z-index: 3;
+}
+
+#beard {
+  width: 45px;
+  height: 45px;
+  background: var(--light-white);
+  border-radius: 50%;
+  top: calc(50% - 50px);
+  z-index: 6;
+}
+
+#beard [data-p] {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background: var(--light-white);
+  border-radius: 50%;
+}
+
+#beard [data-p="a"] {
+  top: 0;
+  left: -12px;
+  -webkit-box-reflect: right 20px;
+}
+
+#beard [data-p="b"] {
+  top: 12px;
+  left: -8.5px;
+  -webkit-box-reflect: right 15px;
+}
+
+#beard [data-p="c"] {
+  top: 18px;
+  left: -7px;
+  -webkit-box-reflect: right 8px;
+}
+
+#beard [data-p="d"] {
+  top: 35px;
+  left: -2px;
+  -webkit-box-reflect: right 0;
+}
+
+#beard [data-p="e"] {
+  top: 40px;
+  left: 9px;
+}
+
+#beard [data-p="f"] {
+  width: 20px;
+  height: 20px;
+  top: -8px;
+  left: -16px;
+  -webkit-box-reflect: right 38px;
+}
+
+#beard [data-p="g"] {
+  width: 15px;
+  height: 15px;
+  top: -17px;
+  left: -16px;
+  -webkit-box-reflect: right 48px;
+}
+
+#beard [data-p="h"] {
+  width: 12px;
+  height: 12px;
+  top: -25px;
+  left: -14px;
+  -webkit-box-reflect: right 50px;
+}
+
+#beard [data-p="i"] {
+  width: 10px;
+  height: 10px;
+  top: -32px;
+  left: -12px;
+  -webkit-box-reflect: right 49px;
+}
+
+#hat {
+  width: 60px;
+  height: 60px;
+  background: var(--thera-light);
+  top: calc(50% - 140px);
+  border-radius: 80px 0 0 0;
+  z-index: 4;
+}
+
+#hat::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--light-white);
+  top: 50px;
+  left: -10px;
+}
+
+#hat::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--thera-light);
+  border: 3px solid var(--light-white);
+  top: -10px;
+  left: 50px;
+}
+
+#top-body {
+  background: var(--thera-light);
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  top: calc(50% - 10px);
+  left: calc(50% + 25px);
+  width: 60px;
+  height: 130px;
+  z-index: 2;
+}
+
+#hand1 .top,
+#hand2 .top {
+  background: var(--thera-dark);
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(25deg);
+  top: calc(50% - 0px);
+  left: calc(50% - 25px);
+  width: 20px;
+  height: 80px;
+  z-index: 1;
+  border-radius: 0 0 10px 0;
+}
+
+#hand2 {
+  z-index: 4;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(10deg);
+  top: 50%;
+  left: 50%;
+  animation: hand1-anim 0.5s ease infinite;
+  animation-play-state: paused;
+}
+
+#hand1 {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(10deg);
+  top: 50%;
+  left: 50%;
+  animation: hand1-anim 0.4s ease infinite;
+  animation-play-state: paused;
+}
+
+#hand2 .top {
+  background: var(--thera-light);
+  border-radius: 50px 50px 50px 0;
+  top: calc(50% + 10px);
+  left: calc(50% + 10px);
+  z-index: 4;
+  box-shadow: 0 -5px 0 0 var(--thera-dark);
+}
+
+#hand1 .medium,
+#hand2 .medium {
+  background: var(--thera-dark);
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  top: calc(50% + 9px);
+  left: calc(50% - 51px);
+  width: 20px;
+  height: 60px;
+  z-index: 1;
+  border-radius: 0 0 0 10px;
+}
+
+#hand2 .medium {
+  background: var(--thera-light);
+  top: calc(50% + 20px);
+  left: calc(50% - 16px);
+}
+
+#hand1 .bottom::after,
+#hand2 .bottom::after {
+  content: "";
+  position: absolute;
+  background: var(--light-white);
+  width: 30px;
+  height: 20px;
+  border-radius: 3px;
+  top: 15px;
+  left: -5px;
+  z-index: 2;
+}
+
+#hand1 .bottom,
+#hand2 .bottom {
+  background: var(--white-skin);
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  top: calc(50% - 25px);
+  left: calc(50% - 67px);
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+  border-radius: 50% 50% 0 0;
+}
+
+#hand2 .bottom {
+  top: calc(50% - 15px);
+  left: calc(50% - 32.5px);
+}
+
+.leg-2-top,
+.leg-1-top {
+  background: var(--thera-light);
+  position: absolute;
+  width: 30px;
+  height: 60px;
+}
+
+.leg-1-top {
+  transform: translate(-50%, -50%) rotate(15deg);
+  top: calc(50% + 80px);
+  left: calc(50% + 30px);
+  z-index: 4;
+}
+
+.leg-2-top {
+  height: 70px;
+  background: var(--thera-dark);
+  transform: translate(-50%, -50%) rotate(40deg);
+  top: calc(50% + 80px);
+  left: calc(50% + 15px);
+  border-radius: 0 0 0 10px;
+  z-index: 1;
+}
+
+.leg-2-bottom {
+  background: var(--thera-light);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: calc(50% + 135px);
+  left: calc(50% + 23px);
+  width: 30px;
+  height: 60px;
+  z-index: 4;
+}
+
+.leg-1-bottom {
+  background: var(--thera-dark);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: calc(50% + 124px);
+  left: calc(50% - 0px);
+  width: 30px;
+  height: 70px;
+  z-index: 3;
+  border-radius: 10px 0 0 0;
+}
+
+#ass {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  top: 50%;
+  left: 50%;
+  z-index: 6;
+  animation: ass-anim 0.3s ease infinite;
+  animation-play-state: paused;
+}
+
+#ass > div {
+  width: 50px;
+  height: 50px;
+  background: var(--thera-light);
+  border-radius: 100%;
+  position: absolute;
+  top: 45px;
+  left: 40px;
+}
+
+#ass > div:last-child {
+  left: 10px;
+  box-shadow: 10px -5px 20px var(--thera-dark);
+}
+
+#boots1 {
+  width: 32px;
+  height: 40px;
+  background: var(--light-black);
+  top: calc(50% + 150px);
+  left: calc(50% + 22.5px);
+  z-index: 5;
+  border-radius: 0 0 5px 0;
+}
+
+#boots2 {
+  width: 30px;
+  height: 40px;
+  top: calc(50% + 140px);
+  left: 50%;
+  background: var(--dark-black);
+  z-index: 3;
+  border-radius: 0 0 5px 0;
+}
+
+#boots2::after,
+#boots1::after {
+  width: 40px;
+  height: 15px;
+  border-radius: 3px;
+  background: var(--light-white);
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -5px;
+}
+
+#boots2::before,
+#boots1::before {
+  width: 24px;
+  height: 24px;
+  border-radius: 50% 0 0 50%;
+  background: var(--dark-black);
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: -15px;
+}
+
+#boots1::before {
+  background: var(--light-black);
+  left: -15px;
+}
+
+.twerk-eye {
+  left: calc(50% - 10px);
+  top: calc(50% - 85px);
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.twerk-eye.twerk-eye-2 {
+  left: calc(50% + 10px);
+  animation: twerk-blink 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+  animation-play-state: paused;
+}
+
+.twerk-eye::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  width: 10px;
+  height: 10px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: #0f172a;
+}
+
+.ml4 {
+  top: calc(50% - min(80px, 12vh));
+  font-weight: 900;
+  font-size: clamp(2.5rem, 14vw, 5.2em);
+  z-index: 15;
+  margin: 0;
+}
+
+.ml4 .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: bolder;
+  color: var(--light-white);
+}
+
+@keyframes ass-anim {
+  0% {
+    transform: translate(-50%, -50%) rotate(-20deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-18deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-20deg);
+  }
+}
+
+@keyframes hand1-anim {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes reveal-glow {
+  0% {
+    text-shadow: 0 0 10px rgba(99, 102, 241, 0.9);
+  }
+  50% {
+    text-shadow: 0 0 24px #fff;
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.9);
+  }
+}
+
+@keyframes twerk-blink {
+  0%,
+  8% {
+    height: 30px;
+  }
+  10%,
+  12% {
+    height: 4px;
+  }
+  14%,
+  100% {
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  #bg {
+    height: 320px;
+    width: min(100%, 360px);
+  }
+}

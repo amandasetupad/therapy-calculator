@@ -1,5 +1,4 @@
 const chips = document.querySelectorAll(".chip");
-const annualBillEl = document.getElementById("annual-bill");
 const noteEl = document.getElementById("result-note");
 const quizFieldsEl = document.getElementById("quiz-fields");
 const revealBillEl = document.getElementById("reveal-bill");
@@ -357,8 +356,10 @@ function renderQuiz() {
     }
     quizFieldsEl.appendChild(el);
   });
-  if (annualBillEl) annualBillEl.textContent = "—";
-  if (noteEl) noteEl.textContent = "Answer every question, then reveal your bill.";
+  if (noteEl) {
+    noteEl.textContent =
+      "Answer everything, then tap reveal — you’ll get a countdown, confetti, and a celebratory therapist moment (still not real pricing).";
+  }
 }
 
 function validateAnswers(list) {
@@ -401,12 +402,17 @@ if (revealBillEl) {
     const list = getQuestions();
     const missing = validateAnswers(list);
     if (missing) {
-      noteEl.textContent = `Please complete: ${missing}`;
+      if (noteEl) noteEl.textContent = `Please complete: ${missing}`;
       return;
     }
     const gk = GENDER_KEY[selectedSlug];
-    annualBillEl.textContent = formatUsd(computeBill(gk, answers));
-    noteEl.textContent = "This number is random fun — not real pricing or advice.";
+    const bill = formatUsd(computeBill(gk, answers));
+    try {
+      sessionStorage.setItem("therapyRevealFormatted", bill);
+    } catch {
+      /* ignore quota / private mode */
+    }
+    window.location.href = "./reveal.html";
   });
 }
 
