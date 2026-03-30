@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-11" />
-    <script defer src="./app.js?v=20260330-11"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-12" />
+    <script defer src="./app.js?v=20260330-12"></script>
   </head>
   <body>
     <header class="site-header">
@@ -31,7 +31,7 @@
               Choose a profile, set a mood, and get a playful estimate of annual therapy cost.
               Modern look, cleaner layout, and fixed character animation.
             </p>
-            <a class="btn btn-primary" href="#calculator">Try Calculator</a>
+            <a class="btn btn-primary" href="#calculator">Choose Gender</a>
           </div>
 
           <div class="hero-card" id="character-card">
@@ -53,14 +53,15 @@
           <div class="panel">
             <fieldset class="quiz-intro">
               <legend>Choose profile</legend>
-              <div class="chips" aria-label="Profile">
-                <a class="chip" href="./questions.html?gender=male">Male</a>
-                <a class="chip active" href="./questions.html?gender=female">Female</a>
-                <a class="chip" href="./questions.html?gender=other">They/Them</a>
+              <div class="chips" role="radiogroup" aria-label="Profile">
+                <button class="chip" data-gender="male" type="button">Male</button>
+                <button class="chip active" data-gender="female" type="button">Female</button>
+                <button class="chip" data-gender="other" type="button">They/Them</button>
               </div>
               <p class="quiz-hint">
                 First page is only selection. Your full questionnaire appears on the next page.
               </p>
+              <button id="start-test-btn" class="btn btn-primary btn-inline" type="button">Start the test</button>
             </fieldset>
           </div>
         </div>

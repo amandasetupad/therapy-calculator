@@ -16,6 +16,7 @@ const friendNameEl = document.getElementById("friend-name");
 const friendGuessEl = document.getElementById("friend-guess");
 const shareOutputEl = document.getElementById("share-output");
 const selectedGenderLabelEl = document.getElementById("selected-gender-label");
+const startTestBtnEl = document.getElementById("start-test-btn");
 
 const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
 const isQuestionsPage = window.location.pathname.endsWith("/questions.html") || window.location.pathname.endsWith("questions.html");
@@ -464,5 +465,11 @@ if (generateLinkEl && friendNameEl && friendGuessEl && shareOutputEl) {
     a.href = url;
     a.textContent = url;
     shareOutputEl.appendChild(a);
+  });
+}
+
+if (startTestBtnEl && !isQuestionsPage) {
+  startTestBtnEl.addEventListener("click", () => {
+    window.location.href = `./questions.html?gender=${selectedSlug}`;
   });
 }
