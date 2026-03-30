@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questions | Therapy Calculator</title>
+    <link rel="stylesheet" href="./styles.css?v=20260330-7" />
+    <script src="./questions-data.js?v=20260330-7"></script>
+    <script defer src="./app.js?v=20260330-7"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="logo" href="./index.html">Therapy Calculator</a>
+        <nav class="nav-links">
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About Us</a>
+          <a href="./contact.html">Contact Us</a>
+          <a href="./privacy-policy.html">Privacy Policy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <h2>Your Questions</h2>
+        <div class="panel">
+          <fieldset class="quiz-intro">
+            <legend>Choose profile</legend>
+            <div class="chips" role="radiogroup" aria-label="Profile">
+              <button class="chip" data-gender="male" type="button">Male</button>
+              <button class="chip active" data-gender="female" type="button">Female</button>
+              <button class="chip" data-gender="other" type="button">They/Them</button>
+            </div>
+          </fieldset>
+
+          <div id="quiz-fields" class="quiz-fields" aria-live="polite"></div>
+          <button id="reveal-bill" class="btn btn-primary btn-inline" type="button">Reveal my therapy bill</button>
+
+          <div class="result result-stack">
+            <div>
+              <p class="result-label">Your (totally scientific) bill</p>
+              <p class="result-value" id="annual-bill">—</p>
+            </div>
+            <p id="result-note" class="result-note">Answer every question, then reveal.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-6" />
-    <script src="./questions-data.js?v=20260330-6"></script>
-    <script defer src="./app.js?v=20260330-6"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-7" />
+    <script defer src="./app.js?v=20260330-7"></script>
   </head>
   <body>
     <header class="site-header">
@@ -54,27 +53,15 @@
           <div class="panel">
             <fieldset class="quiz-intro">
               <legend>Choose profile</legend>
-              <div class="chips" role="radiogroup" aria-label="Profile">
-                <button class="chip" data-gender="male" type="button">Male</button>
-                <button class="chip active" data-gender="female" type="button">Female</button>
-                <button class="chip" data-gender="other" type="button">They/Them</button>
+              <div class="chips" aria-label="Profile">
+                <a class="chip" href="./questions.html?gender=male">Male</a>
+                <a class="chip active" href="./questions.html?gender=female">Female</a>
+                <a class="chip" href="./questions.html?gender=other">They/Them</a>
               </div>
               <p class="quiz-hint">
-                These are the same questions from your original build. Answer them, then tap for a playful random total.
+                First page is only selection. Your full questionnaire appears on the next page.
               </p>
             </fieldset>
-
-            <div id="quiz-fields" class="quiz-fields" aria-live="polite"></div>
-
-            <button id="reveal-bill" class="btn btn-primary btn-inline" type="button">Reveal my therapy bill</button>
-
-            <div class="result result-stack">
-              <div>
-                <p class="result-label">Your (totally scientific) bill</p>
-                <p class="result-value" id="annual-bill">—</p>
-              </div>
-              <p id="result-note" class="result-note">Answer the questions, then reveal.</p>
-            </div>
           </div>
         </div>
       </section>

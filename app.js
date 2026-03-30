@@ -20,6 +20,10 @@ const GENDER_KEY = { male: "Male", female: "Female", other: "Other" };
 
 let selectedSlug = "female";
 let answers = {};
+const urlGender = new URLSearchParams(window.location.search).get("gender");
+if (urlGender && Object.prototype.hasOwnProperty.call(GENDER_KEY, urlGender)) {
+  selectedSlug = urlGender;
+}
 
 function formatUsd(value) {
   return new Intl.NumberFormat("en-US", {
@@ -30,6 +34,7 @@ function formatUsd(value) {
 }
 
 function setFace(genderSlug) {
+  if (!faceEl || !eyeLeftEl || !eyeRightEl || !mouthEl || !propEl) return;
   faceEl.className = "face";
   propEl.className = "prop";
   eyeLeftEl.textContent = "";
@@ -333,8 +338,8 @@ function renderQuiz() {
     }
     quizFieldsEl.appendChild(el);
   });
-  annualBillEl.textContent = "—";
-  noteEl.textContent = "Answer every question, then reveal your bill.";
+  if (annualBillEl) annualBillEl.textContent = "—";
+  if (noteEl) noteEl.textContent = "Answer every question, then reveal your bill.";
 }
 
 function validateAnswers(list) {
@@ -348,10 +353,20 @@ function validateAnswers(list) {
 }
 
 chips.forEach((chip) => {
+  if (!chip.dataset.gender) return;
+  if (chip.dataset.gender === selectedSlug) {
+    chip.classList.add("active");
+  } else {
+    chip.classList.remove("active");
+  }
   chip.addEventListener("click", () => {
     chips.forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     selectedSlug = chip.dataset.gender || "female";
+    if (quizFieldsEl) {
+      const next = `${window.location.pathname}?gender=${selectedSlug}`;
+      window.history.replaceState({}, "", next);
+    }
     setFace(selectedSlug);
     renderQuiz();
   });
@@ -372,7 +387,7 @@ if (revealBillEl) {
 }
 
 setFace(selectedSlug);
-renderQuiz();
+if (quizFieldsEl) renderQuiz();
 
 if (generateLinkEl && friendNameEl && friendGuessEl && shareOutputEl) {
   generateLinkEl.addEventListener("click", () => {
