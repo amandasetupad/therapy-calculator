@@ -94,14 +94,19 @@ window.QUESTIONS_BY_GENDER = {
       id: "bangSituationFemale",
       text: "What's your bang situation?",
       type: "imageSelector",
+      imageGridClass: "image-option-grid--hairline",
       options: [
-        { value: "Bald", label: "Bald", img: "" },
-        { value: "Microbangs", label: "Microbangs", img: "" },
-        { value: "Regular Bangs", label: "Regular Bangs", img: "" },
-        { value: "Emo Bangs", label: "Emo Bangs", img: "" },
-        { value: "Middle Part", label: "Middle Part (Moses style)", img: "" },
-        { value: "Afro", label: "Afro", img: "" },
-        { value: "Side Part (No Bangs)", label: "Side Part (No Bangs)", img: "" }
+        { value: "Bald", label: "Bald", img: "./assets/bang-female/bald.png" },
+        { value: "Microbangs", label: "Microbangs", img: "./assets/bang-female/microbangs.png" },
+        { value: "Regular Bangs", label: "Regular Bangs", img: "./assets/bang-female/regular-bangs.png" },
+        { value: "Emo Bangs", label: "Emo Bangs", img: "./assets/bang-female/emo-bangs.png" },
+        { value: "Middle Part", label: "Middle Part (Moses style)", img: "./assets/bang-female/middle-part.png" },
+        { value: "Afro", label: "Afro", img: "./assets/bang-female/afro.png" },
+        {
+          value: "Side Part (No Bangs)",
+          label: "Side Part (No Bangs)",
+          img: "./assets/bang-female/side-part.png"
+        }
       ]
     },
     {
