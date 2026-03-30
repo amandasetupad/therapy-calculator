@@ -42,8 +42,8 @@ window.QUESTIONS_BY_GENDER = {
       min: 0,
       max: 7,
       defaultValue: 1,
-      minImageSrc: "",
-      maxImageSrc: ""
+      minImageSrc: "./assets/breakups-male/min.png",
+      maxImageSrc: "./assets/breakups-male/max.png"
     },
     {
       id: "crypto",
