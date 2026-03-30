@@ -161,7 +161,7 @@ function renderImageGrid(q) {
   wrap.className = "quiz-field quiz-fieldset";
   wrap.innerHTML = `<legend class="quiz-label">${q.text}</legend>`;
   const grid = document.createElement("div");
-  grid.className = "image-option-grid";
+  grid.className = ["image-option-grid", q.imageGridClass].filter(Boolean).join(" ");
   q.options.forEach((opt) => {
     const btn = document.createElement("button");
     btn.type = "button";

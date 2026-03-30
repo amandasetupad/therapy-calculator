@@ -11,11 +11,28 @@ window.QUESTIONS_BY_GENDER = {
       id: "hairline",
       text: "Hairline situation?",
       type: "hairlineSelector",
+      imageGridClass: "image-option-grid--hairline",
       options: [
-        { value: "Cooked (Bald)", label: "Cooked", img: "" },
-        { value: "Just let it go", label: "Just let it go", img: "" },
-        { value: "Receding", label: "Receding", img: "" },
-        { value: "Full head of hair", label: "Full head of hair", img: "" }
+        {
+          value: "Cooked (Bald)",
+          label: "Cooked",
+          img: "./assets/hairline-male/cooked.png"
+        },
+        {
+          value: "Just let it go",
+          label: "Just let it go",
+          img: "./assets/hairline-male/just-let-it-go.png"
+        },
+        {
+          value: "Receding",
+          label: "Receding",
+          img: "./assets/hairline-male/receding.png"
+        },
+        {
+          value: "Full head of hair",
+          label: "Full head of hair",
+          img: "./assets/hairline-male/full.png"
+        }
       ]
     },
     {

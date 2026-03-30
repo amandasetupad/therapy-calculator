@@ -1105,6 +1105,24 @@ input[type="range"] {
   color: var(--brand);
 }
 
+.image-option-grid--hairline {
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 12px;
+}
+
+.image-option-grid--hairline .image-option {
+  font-size: 0.8rem;
+}
+
+.image-option-grid--hairline .image-option img {
+  width: 100%;
+  max-width: 132px;
+  height: 104px;
+  object-fit: contain;
+  object-position: center bottom;
+  background: rgba(232, 239, 232, 0.85);
+}
+
 .slider-row {
   display: flex;
   align-items: center;
