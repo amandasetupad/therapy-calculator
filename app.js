@@ -1,5 +1,4 @@
 const chips = document.querySelectorAll(".chip");
-const priceEl = document.getElementById("price");
 const annualBillEl = document.getElementById("annual-bill");
 const noteEl = document.getElementById("result-note");
 
@@ -97,14 +96,16 @@ function setFace(gender) {
 
 function setTestPanel(gender) {
   testPanels.forEach((panel) => {
-    panel.classList.toggle("active", panel.dataset.test === gender);
+    const isActive = panel.dataset.test === gender;
+    panel.classList.toggle("active", isActive);
+    panel.hidden = !isActive;
   });
 }
 
 function updateResult() {
-  const price = Number(priceEl.value);
   let score = 5;
-  let sessions = 4;
+  let min = 2500;
+  let max = 7000;
 
   if (selectedGender === "male") {
     const cigs = Number(maleCigsEl.value);
@@ -112,25 +113,27 @@ function updateResult() {
     maleCigsValueEl.textContent = String(cigs);
     maleEyesValueEl.textContent = String(eyes);
     score = (cigs / 2 + eyes) / 2;
-    sessions = 2 + Math.round(score / 1.8);
+    min = 2200 + score * 180;
+    max = 7000 + score * 500;
   } else if (selectedGender === "female") {
     const love = Number(femaleLoveEl.value);
     const hearts = Number(femaleHeartsEl.value);
     femaleLoveValueEl.textContent = String(love);
     femaleHeartsValueEl.textContent = String(hearts);
     score = (love + hearts) / 2;
-    sessions = 2 + Math.round(score / 1.6);
+    min = 2600 + score * 220;
+    max = 7600 + score * 550;
   } else {
     const money = Number(otherMoneyEl.value);
     const dollar = Number(otherDollarEl.value);
     otherMoneyValueEl.textContent = String(money);
     otherDollarValueEl.textContent = String(dollar);
     score = (money + dollar) / 2;
-    sessions = 2 + Math.round(score / 1.7);
+    min = 2400 + score * 210;
+    max = 7300 + score * 530;
   }
 
-  const moodMultiplier = 0.9 + score * 0.05;
-  const annual = sessions * price * 12 * moodMultiplier;
+  const annual = Math.round(min + Math.random() * (max - min));
 
   annualBillEl.textContent = formatUsd(annual);
 
@@ -154,7 +157,7 @@ chips.forEach((chip) => {
   });
 });
 
-[maleCigsEl, maleEyesEl, femaleLoveEl, femaleHeartsEl, otherMoneyEl, otherDollarEl, priceEl].forEach((input) => {
+[maleCigsEl, maleEyesEl, femaleLoveEl, femaleHeartsEl, otherMoneyEl, otherDollarEl].forEach((input) => {
   input.addEventListener("input", updateResult);
 });
 

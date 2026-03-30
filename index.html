@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-4" />
-    <script defer src="./app.js?v=20260330-4"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-5" />
+    <script defer src="./app.js?v=20260330-5"></script>
   </head>
   <body>
     <header class="site-header">
@@ -63,7 +63,7 @@
 
               <div class="test-box">
                 <p class="test-title">Gender-specific test</p>
-                <div class="gender-test" data-test="male">
+                <div class="gender-test" data-test="male" hidden>
                   <label>
                     Cigarettes per week
                     <input id="male-cigarettes" type="range" min="0" max="20" value="4" />
@@ -89,7 +89,7 @@
                   </label>
                 </div>
 
-                <div class="gender-test" data-test="other">
+                <div class="gender-test" data-test="other" hidden>
                   <label>
                     Money mindset
                     <input id="other-money" type="range" min="1" max="10" value="6" />
@@ -103,10 +103,10 @@
                 </div>
               </div>
 
-              <label>
-                Cost per session (USD)
-                <input id="price" type="number" min="20" max="500" value="120" />
-              </label>
+              <div class="test-box">
+                <p class="test-title">How this works</p>
+                <p class="result-note">Pick a gender, answer that gender's questions, and we generate a playful random total.</p>
+              </div>
             </div>
 
             <div class="result">
