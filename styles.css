@@ -1136,15 +1136,18 @@ input[type="range"] {
 .slider-images-row {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 10px;
 }
 
 .slider-thumb-img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 8px;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  object-position: center;
+  background: #f8fafc;
+  border-radius: 12px;
   border: 1px solid var(--border);
 }
 
