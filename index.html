@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-16" />
-    <script defer src="./app.js?v=20260330-16"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-22" />
+    <script defer src="./app.js?v=20260330-22"></script>
   </head>
   <body>
     <header class="site-header">
@@ -35,13 +35,31 @@
           </div>
 
           <div class="hero-card" id="character-card">
-            <div class="face female" id="face">
-              <span class="hair"></span>
-              <span class="glasses" aria-hidden="true"></span>
-              <span class="eye left" id="eye-left"></span>
-              <span class="eye right" id="eye-right"></span>
-              <span class="mouth" id="mouth"></span>
-              <span class="prop" id="prop" aria-hidden="true"></span>
+            <div class="hero-avatar-wrap">
+              <div class="face female" id="face">
+                <div class="ears" aria-hidden="true"></div>
+                <div class="face__wrap">
+                  <div class="eyes eyes--heart" id="eyes"></div>
+                  <div class="nose" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="12" viewBox="0 0 29 12">
+                      <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                        <g stroke-width="4">
+                          <path d="M2.4 2.5C4.6 6.6 9.1 9.4 14.4 9.4L14.4 9.4C19.8 9.4 24.3 6.5 26.4 2.4" />
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="mouth" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="44" height="8" viewBox="0 0 44 8">
+                      <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                        <g stroke-width="4">
+                          <path d="M2.2 2.2C5.7 4 13.3 5.2 22.1 5.2L22.1 5.2C31 5.2 38.7 3.9 42.2 2.2" />
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
             <p class="face-caption sr-only" id="face-caption">Therapist avatar (woman)</p>
           </div>

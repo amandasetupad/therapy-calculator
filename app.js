@@ -5,10 +5,7 @@ const quizFieldsEl = document.getElementById("quiz-fields");
 const revealBillEl = document.getElementById("reveal-bill");
 
 const faceEl = document.getElementById("face");
-const eyeLeftEl = document.getElementById("eye-left");
-const eyeRightEl = document.getElementById("eye-right");
-const mouthEl = document.getElementById("mouth");
-const propEl = document.getElementById("prop");
+const eyesEl = document.getElementById("eyes");
 const faceCaptionEl = document.getElementById("face-caption");
 
 const generateLinkEl = document.getElementById("generate-link");
@@ -41,80 +38,21 @@ function formatUsd(value) {
 }
 
 function setFace(genderSlug) {
-  if (!faceEl || !eyeLeftEl || !eyeRightEl || !mouthEl || !propEl) return;
+  if (!faceEl || !eyesEl) return;
   faceEl.className = "face";
-  propEl.className = "prop";
-  eyeLeftEl.textContent = "";
-  eyeRightEl.textContent = "";
-  [eyeLeftEl, eyeRightEl].forEach((eye) => {
-    eye.style.background = "#1f2937";
-    eye.style.color = "";
-    eye.style.fontSize = "";
-    eye.style.display = "";
-    eye.style.placeItems = "";
-  });
-  mouthEl.style.borderBottomColor = "#b91c1c";
+  eyesEl.className = "eyes";
 
   if (genderSlug === "male") {
     faceEl.classList.add("face-male");
-    eyeLeftEl.style.background = "#60a5fa";
-    eyeRightEl.style.background = "#60a5fa";
-    eyeLeftEl.style.width = "15px";
-    eyeLeftEl.style.height = "15px";
-    eyeRightEl.style.width = "15px";
-    eyeRightEl.style.height = "15px";
-    eyeLeftEl.style.boxShadow = "0 11px 0 -5px rgba(37, 99, 235, 0.45)";
-    eyeRightEl.style.boxShadow = "0 11px 0 -5px rgba(37, 99, 235, 0.45)";
-    mouthEl.style.borderTop = "";
-    mouthEl.style.borderBottomColor = "#7f1d1d";
-    propEl.classList.add("cigarette");
-    if (faceCaptionEl) faceCaptionEl.textContent = "Male mode: cool eyes + cigarette prop";
+    eyesEl.classList.add("eyes--basic");
+    if (faceCaptionEl) faceCaptionEl.textContent = "Male mode: basic eyes";
   } else if (genderSlug === "female") {
     faceEl.classList.add("female");
-    eyeLeftEl.textContent = "";
-    eyeRightEl.textContent = "";
-    eyeLeftEl.style.background = "";
-    eyeRightEl.style.background = "";
-    eyeLeftEl.style.width = "";
-    eyeLeftEl.style.height = "";
-    eyeRightEl.style.width = "";
-    eyeRightEl.style.height = "";
-    eyeLeftEl.style.boxShadow = "";
-    eyeRightEl.style.boxShadow = "";
-    eyeLeftEl.style.color = "";
-    eyeRightEl.style.color = "";
-    eyeLeftEl.style.fontSize = "";
-    eyeRightEl.style.fontSize = "";
-    eyeLeftEl.style.display = "";
-    eyeRightEl.style.display = "";
-    eyeLeftEl.style.placeItems = "";
-    eyeRightEl.style.placeItems = "";
-    mouthEl.style.borderBottomColor = "";
-    mouthEl.style.borderTop = "";
-    propEl.classList.add("clipboard");
-    if (faceCaptionEl) faceCaptionEl.textContent = "Therapist avatar (woman)";
+    eyesEl.classList.add("eyes--heart");
+    if (faceCaptionEl) faceCaptionEl.textContent = "Female mode: heart eyes";
   } else {
     faceEl.classList.add("face-other");
-    eyeLeftEl.style.background = "transparent";
-    eyeRightEl.style.background = "transparent";
-    eyeLeftEl.style.width = "";
-    eyeLeftEl.style.height = "";
-    eyeRightEl.style.width = "";
-    eyeRightEl.style.height = "";
-    eyeLeftEl.style.boxShadow = "";
-    eyeRightEl.style.boxShadow = "";
-    eyeLeftEl.textContent = "$";
-    eyeRightEl.textContent = "$";
-    eyeLeftEl.style.color = "#15803d";
-    eyeRightEl.style.color = "#15803d";
-    eyeLeftEl.style.fontSize = "18px";
-    eyeRightEl.style.fontSize = "18px";
-    eyeLeftEl.style.display = "grid";
-    eyeRightEl.style.display = "grid";
-    eyeLeftEl.style.placeItems = "center";
-    eyeRightEl.style.placeItems = "center";
-    mouthEl.style.borderTop = "";
-    mouthEl.style.borderBottomColor = "#166534";
+    eyesEl.classList.add("eyes--dollar");
     if (faceCaptionEl) faceCaptionEl.textContent = "They/Them mode: dollar-sign eyes";
   }
 }

@@ -125,277 +125,279 @@ body {
   gap: 12px;
 }
 
-.face {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.hero-avatar-wrap {
   position: relative;
-  background: linear-gradient(165deg, #ffe8dc 0%, #ffd7b0 45%, #f5cba7 100%);
-  border: 5px solid #0f172a;
-  overflow: hidden;
+  width: 10em;
+  height: 11.25em;
+}
+
+.hero-avatar-wrap .face,
+.hero-avatar-wrap .face *,
+.hero-avatar-wrap .face *::before,
+.hero-avatar-wrap .face *::after {
+  box-sizing: border-box;
+}
+
+.hero-avatar-wrap .face {
+  font-size: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10em;
+  height: 11.25em;
+  transform: translate3d(-50%, -50%, 0);
   flex-shrink: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
 }
 
-.hair {
+.hero-avatar-wrap .face__wrap {
+  width: 8.475em;
+  height: 100%;
+  position: relative;
+  background-color: #ffcc5c;
+  border: 0.375em solid #000;
+  border-radius: 8em;
+  animation: look_shadow 2s ease-in-out infinite;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.hero-avatar-wrap .face__wrap svg {
+  width: 100%;
+  height: 100%;
+  stroke: #000;
+  fill: none;
+}
+
+.hero-avatar-wrap .ears {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  z-index: 2;
-  transition: background 0.25s ease, height 0.25s ease, border-radius 0.25s ease;
-}
-
-/* Therapist (woman) — symmetric bob + even side strands */
-.face.female .hair {
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 112%;
-  height: 96px;
-  background: linear-gradient(180deg, #7a5c4e 0%, #5d4037 55%, #4e342e 100%);
-  border-radius: 50% 50% 38% 38%;
-  inset: unset;
-  right: auto;
-  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.08);
-}
-
-.face.female .hair::before,
-.face.female .hair::after {
-  content: "";
-  position: absolute;
-  width: 32px;
-  height: 54px;
-  bottom: -40px;
-  background: #4e342e;
-  border-radius: 0 0 48% 48%;
-}
-
-.face.female .hair::before {
-  left: 14px;
-}
-
-.face.female .hair::after {
-  right: 14px;
-}
-
-/* Male — short hair */
-.face.face-male .hair {
-  inset: -22px -5px auto -5px;
-  height: 64px;
-  width: auto;
-  transform: none;
   left: 0;
-  right: 0;
-  background: #3f2d24;
-  border-radius: 50% 50% 0 0;
-}
-
-.face.face-male .hair::before,
-.face.face-male .hair::after {
-  display: none;
-}
-
-/* They/them — playful color-block hair */
-.face.face-other .hair {
-  top: -18px;
-  left: 8%;
-  right: 8%;
-  width: auto;
-  height: 68px;
-  transform: none;
-  inset: unset;
-  background: linear-gradient(95deg, #7c3aed 0%, #a855f7 40%, #d946ef 100%);
-  border-radius: 45% 45% 28% 28%;
-}
-
-.face.face-other .hair::before,
-.face.face-other .hair::after {
-  display: none;
-}
-
-/* Glasses — therapist woman only (aligned with eyes) */
-.glasses {
-  display: none;
-  position: absolute;
-  z-index: 4;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 118px;
-  height: 30px;
+  top: 0;
+  animation: look_ears 2s ease-in-out infinite reverse;
   pointer-events: none;
-  background:
-    linear-gradient(#0f172a, #0f172a) 50% 50% / 20px 3px no-repeat;
 }
 
-.face.female .glasses {
+.hero-avatar-wrap .ears::before,
+.hero-avatar-wrap .ears::after {
+  content: "";
   display: block;
+  position: absolute;
+  width: 1.5em;
+  height: 2.625em;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffcc5c;
+  border: 0.375em solid #000;
+  border-radius: 1.5em;
+  animation: look_shadow 2s ease-in-out infinite;
+  z-index: 0;
 }
 
-.glasses::before,
-.glasses::after {
+.hero-avatar-wrap .ears::before {
+  left: 0;
+}
+
+.hero-avatar-wrap .ears::after {
+  right: 0;
+}
+
+.hero-avatar-wrap .eyes {
+  animation: look 2s ease-in-out infinite;
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+}
+
+.hero-avatar-wrap .eyes::before,
+.hero-avatar-wrap .eyes::after {
   content: "";
+  display: block;
   position: absolute;
-  width: 38px;
-  height: 34px;
-  top: -2px;
-  border: 2.5px solid #0f172a;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  top: 50%;
+  transform: translateY(-50%);
+  animation: blink 7s ease-in-out infinite;
 }
 
-.glasses::before {
-  left: 8px;
+.hero-avatar-wrap .eyes--basic::before,
+.hero-avatar-wrap .eyes--basic::after {
+  width: 0.75em;
+  height: 1.125em;
+  background-color: #000;
+  border-radius: 1.5em;
 }
 
-.glasses::after {
-  right: 8px;
+.hero-avatar-wrap .eyes--basic::before {
+  left: 24%;
 }
 
-.eye {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+.hero-avatar-wrap .eyes--basic::after {
+  right: 24%;
+}
+
+.hero-avatar-wrap .eyes--heart::before,
+.hero-avatar-wrap .eyes--heart::after {
+  content: "\2665";
+  width: 1em;
+  height: 1.125em;
+  background: none;
+  border-radius: 0;
+  font-size: 0.88em;
+  line-height: 1.125em;
+  text-align: center;
+  color: #db2777;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-avatar-wrap .eyes--heart::before {
+  left: 20%;
+}
+
+.hero-avatar-wrap .eyes--heart::after {
+  right: 20%;
+}
+
+.hero-avatar-wrap .eyes--dollar::before,
+.hero-avatar-wrap .eyes--dollar::after {
+  content: "$";
+  width: 0.88em;
+  height: 1.125em;
+  background: none;
+  border-radius: 0;
+  color: #15803d;
+  font-weight: 800;
+  font-size: 0.85em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  line-height: 1.125em;
+  text-align: center;
+}
+
+.hero-avatar-wrap .eyes--dollar::before {
+  left: 22%;
+}
+
+.hero-avatar-wrap .eyes--dollar::after {
+  right: 22%;
+}
+
+.hero-avatar-wrap .nose {
+  width: 1.55em;
+  height: 0.75em;
   position: absolute;
-  top: 80px;
-  background: #1f2937;
-  z-index: 3;
-  transition: all 200ms ease;
+  left: calc(50% - 0.75em);
+  bottom: 3.375em;
+  animation: look 2s ease-in-out infinite;
 }
 
-.eye.left {
-  left: 50px;
-}
-
-.eye.right {
-  right: 50px;
-}
-
-.face.female .eye {
-  top: 88px;
-  width: 10px;
-  height: 10px;
-  left: 56px;
-  right: auto;
-  background: #1e293b;
-  box-shadow:
-    1.5px 1.5px 0 rgba(255, 255, 255, 0.5) inset,
-    0 0 0 1px rgba(15, 23, 42, 0.35);
-}
-
-.face.female .eye.right {
-  left: auto;
-  right: 56px;
-}
-
-.face.face-male .eye {
-  top: 74px;
-  left: 48px;
-}
-
-.face.face-male .eye.right {
-  left: auto;
-  right: 48px;
-}
-
-.face.face-other .eye {
-  top: 78px;
-  width: 20px;
-  height: 20px;
-}
-
-.face.face-other .eye.left {
-  left: 44px;
-}
-
-.face.face-other .eye.right {
-  right: 44px;
-}
-
-.mouth {
-  position: absolute;
-  left: 50%;
-  bottom: 50px;
-  width: 40px;
-  height: 14px;
-  transform: translateX(-50%);
-  border-bottom: 3px solid #9f1239;
-  border-radius: 0 0 20px 20px;
-  z-index: 3;
-}
-
-/* Therapist — gentle smile (bottom arc, not inverted) */
-.face.female .mouth {
-  border-top: none;
-  border-bottom: 2.5px solid #9f1239;
-  border-radius: 0 0 50% 50%;
-  height: 8px;
-  width: 30px;
-  bottom: 58px;
-  background: transparent;
-}
-
-.face.face-male .mouth {
-  border-top: none;
-  border-bottom: 3px solid #7f1d1d;
-  border-radius: 0 0 20px 20px;
-  height: 14px;
-  width: 40px;
-  bottom: 50px;
-}
-
-.face.face-other .mouth {
-  border-top: none;
-  border-bottom: 3px solid #166534;
-  border-radius: 0 0 18px 18px;
-  bottom: 48px;
-}
-
-.prop {
-  position: absolute;
-  right: 22px;
-  bottom: 38px;
-  z-index: 5;
-}
-
-.prop.cigarette {
-  width: 32px;
-  height: 5px;
-  background: #e5e7eb;
-  border-right: 10px solid #f97316;
-  transform: rotate(-10deg);
-}
-
-/* Clipboard — lower corner, “held” angle */
-.face.female .prop.clipboard {
-  right: 12px;
-  bottom: 22px;
-  transform: rotate(12deg);
-}
-
-.prop.clipboard {
-  position: absolute;
-  width: 20px;
-  height: 26px;
-  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  border: 2px solid #475569;
-  border-radius: 2px;
-  box-shadow: 1px 2px 0 rgba(15, 23, 42, 0.15);
-}
-
-.prop.clipboard::before {
+.hero-avatar-wrap .nose::before {
   content: "";
+  display: block;
   position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 6px;
-  background: #94a3b8;
-  border-radius: 2px 2px 0 0;
+  width: 0;
+  height: 0;
+  bottom: 0.275em;
+  right: 0;
+  border-top: 1em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-left: 0.2em solid rgba(0, 0, 0, 0.2);
+  animation: look_shadow__nose 2s ease-in-out infinite;
 }
 
-.face.female .eye,
-.face.female .mouth {
-  transition: all 200ms ease;
+.hero-avatar-wrap .mouth {
+  width: 2.75em;
+  height: 0.5em;
+  position: absolute;
+  left: calc(50% - 1.375em);
+  bottom: 2.4em;
+  animation: look_mouth 2s ease-in-out infinite;
+}
+
+@keyframes look {
+  0% {
+    transform: translateY(1em);
+  }
+  50% {
+    transform: translateY(-1.5em);
+  }
+  100% {
+    transform: translateY(1em);
+  }
+}
+
+@keyframes look_mouth {
+  0% {
+    transform: translateY(0.75em);
+  }
+  50% {
+    transform: translateY(-1.4em);
+  }
+  100% {
+    transform: translateY(0.75em);
+  }
+}
+
+@keyframes look_ears {
+  0% {
+    transform: translateY(-1em);
+  }
+  50% {
+    transform: translateY(0.75em);
+  }
+  100% {
+    transform: translateY(-1em);
+  }
+}
+
+@keyframes look_shadow {
+  0% {
+    box-shadow: inset -0.5em 0.5em 0 rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: inset -0.5em -0.5em 0 rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: inset -0.5em 0.5em 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes look_shadow__nose {
+  0% {
+    border-bottom: 1.75em solid rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    border-bottom: 1em solid rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    border-bottom: 1.75em solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes blink {
+  0% {
+    height: 1.125em;
+  }
+  1% {
+    height: 0.2em;
+  }
+  2% {
+    height: 1.125em;
+  }
+  10% {
+    height: 1.125em;
+  }
+  11% {
+    height: 0.2em;
+  }
+  12% {
+    height: 1.125em;
+  }
+  100% {
+    height: 1.125em;
+  }
 }
 
 .face-caption {
