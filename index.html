@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Therapy Calculator</title>
     <meta name="description" content="A playful therapy cost calculator with animated character moods." />
-    <link rel="stylesheet" href="./styles.css?v=20260330-5" />
-    <script defer src="./app.js?v=20260330-5"></script>
+    <link rel="stylesheet" href="./styles.css?v=20260330-6" />
+    <script src="./questions-data.js?v=20260330-6"></script>
+    <script defer src="./app.js?v=20260330-6"></script>
   </head>
   <body>
     <header class="site-header">
@@ -51,70 +52,28 @@
         <div class="container">
           <h2>Calculator</h2>
           <div class="panel">
-            <div class="grid-2">
-              <fieldset>
-                <legend>Choose profile</legend>
-                <div class="chips" role="radiogroup" aria-label="Profile">
-                  <button class="chip" data-gender="male" type="button">Male</button>
-                  <button class="chip active" data-gender="female" type="button">Female</button>
-                  <button class="chip" data-gender="other" type="button">They/Them</button>
-                </div>
-              </fieldset>
-
-              <div class="test-box">
-                <p class="test-title">Gender-specific test</p>
-                <div class="gender-test" data-test="male" hidden>
-                  <label>
-                    Cigarettes per week
-                    <input id="male-cigarettes" type="range" min="0" max="20" value="4" />
-                    <small><span id="male-cigarettes-value">4</span> / week</small>
-                  </label>
-                  <label>
-                    Blue-circle eye level
-                    <input id="male-eyes" type="range" min="1" max="10" value="5" />
-                    <small><span id="male-eyes-value">5</span> / 10</small>
-                  </label>
-                </div>
-
-                <div class="gender-test active" data-test="female">
-                  <label>
-                    Love drama level
-                    <input id="female-love" type="range" min="1" max="10" value="6" />
-                    <small><span id="female-love-value">6</span> / 10</small>
-                  </label>
-                  <label>
-                    Heart-eye intensity
-                    <input id="female-hearts" type="range" min="1" max="10" value="7" />
-                    <small><span id="female-hearts-value">7</span> / 10</small>
-                  </label>
-                </div>
-
-                <div class="gender-test" data-test="other" hidden>
-                  <label>
-                    Money mindset
-                    <input id="other-money" type="range" min="1" max="10" value="6" />
-                    <small><span id="other-money-value">6</span> / 10</small>
-                  </label>
-                  <label>
-                    Dollar-sign sparkle
-                    <input id="other-dollar" type="range" min="1" max="10" value="6" />
-                    <small><span id="other-dollar-value">6</span> / 10</small>
-                  </label>
-                </div>
+            <fieldset class="quiz-intro">
+              <legend>Choose profile</legend>
+              <div class="chips" role="radiogroup" aria-label="Profile">
+                <button class="chip" data-gender="male" type="button">Male</button>
+                <button class="chip active" data-gender="female" type="button">Female</button>
+                <button class="chip" data-gender="other" type="button">They/Them</button>
               </div>
+              <p class="quiz-hint">
+                These are the same questions from your original build. Answer them, then tap for a playful random total.
+              </p>
+            </fieldset>
 
-              <div class="test-box">
-                <p class="test-title">How this works</p>
-                <p class="result-note">Pick a gender, answer that gender's questions, and we generate a playful random total.</p>
-              </div>
-            </div>
+            <div id="quiz-fields" class="quiz-fields" aria-live="polite"></div>
 
-            <div class="result">
+            <button id="reveal-bill" class="btn btn-primary btn-inline" type="button">Reveal my therapy bill</button>
+
+            <div class="result result-stack">
               <div>
-                <p class="result-label">Estimated yearly bill</p>
-                <p class="result-value" id="annual-bill">$5,760</p>
+                <p class="result-label">Your (totally scientific) bill</p>
+                <p class="result-value" id="annual-bill">—</p>
               </div>
-              <p id="result-note" class="result-note">Balanced mood mode selected.</p>
+              <p id="result-note" class="result-note">Answer the questions, then reveal.</p>
             </div>
           </div>
         </div>
