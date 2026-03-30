@@ -12,10 +12,10 @@ window.QUESTIONS_BY_GENDER = {
       text: "Hairline situation?",
       type: "hairlineSelector",
       options: [
-        { value: "Cooked (Bald)", label: "Cooked", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/807e4b915c7a8c617786f97cb630ae65.jpg" },
-        { value: "Just let it go", label: "Just let it go", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/f97438aae302f3697c9fbc9122461fab.jpg" },
-        { value: "Receding", label: "Receding", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/a09f1aef4fa877595ca942f4655160d5.jpg" },
-        { value: "Full head of hair", label: "Full head of hair", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/13258eaaaa614156d4cd030dbf922973.jpg" }
+        { value: "Cooked (Bald)", label: "Cooked", img: "" },
+        { value: "Just let it go", label: "Just let it go", img: "" },
+        { value: "Receding", label: "Receding", img: "" },
+        { value: "Full head of hair", label: "Full head of hair", img: "" }
       ]
     },
     {
@@ -25,8 +25,8 @@ window.QUESTIONS_BY_GENDER = {
       min: 0,
       max: 7,
       defaultValue: 1,
-      minImageSrc: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/2f95b55a9766a3a80ca91de22709c901.jpg",
-      maxImageSrc: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/38b97e9a05b38d8899647e9cd12dfe99.jpg"
+      minImageSrc: "",
+      maxImageSrc: ""
     },
     {
       id: "crypto",
@@ -77,13 +77,13 @@ window.QUESTIONS_BY_GENDER = {
       text: "What's your bang situation?",
       type: "imageSelector",
       options: [
-        { value: "Bald", label: "Bald", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/3b1129c3d67d8c46087d849d2b7ef7db.jpg" },
-        { value: "Microbangs", label: "Microbangs", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/7dd9097984378bde0627d0327a0b9270.jpg" },
-        { value: "Regular Bangs", label: "Regular Bangs", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/9af71449dd05d29f72b85e59dd5cf162.jpg" },
-        { value: "Emo Bangs", label: "Emo Bangs", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/1b52850ea985906f0057e131aa197c50.jpg" },
-        { value: "Middle Part", label: "Middle Part (Moses style)", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/8a654fa920d8826524488021bba3202b.jpg" },
-        { value: "Afro", label: "Afro", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/37a7ffccec2ac0c61f19e4a081307dc5.jpg" },
-        { value: "Side Part (No Bangs)", label: "Side Part (No Bangs)", img: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/3f20d9c7cd66a84e34f1a96b1e287a2a.jpg" }
+        { value: "Bald", label: "Bald", img: "" },
+        { value: "Microbangs", label: "Microbangs", img: "" },
+        { value: "Regular Bangs", label: "Regular Bangs", img: "" },
+        { value: "Emo Bangs", label: "Emo Bangs", img: "" },
+        { value: "Middle Part", label: "Middle Part (Moses style)", img: "" },
+        { value: "Afro", label: "Afro", img: "" },
+        { value: "Side Part (No Bangs)", label: "Side Part (No Bangs)", img: "" }
       ]
     },
     {
@@ -93,8 +93,8 @@ window.QUESTIONS_BY_GENDER = {
       min: 0,
       max: 7,
       defaultValue: 1,
-      minImageSrc: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/954fd12905b095d7be80e11f978ab56f.jpg",
-      maxImageSrc: "https://storage.googleapis.com/hostinger-horizons-assets-prod/fbb2a04b-26fb-4eac-bfb0-08e3f3d038c2/116e4d580d9b0ec5e1cc6923e69855c9.jpg"
+      minImageSrc: "",
+      maxImageSrc: ""
     },
     {
       id: "emotionalBaggageFemale",
