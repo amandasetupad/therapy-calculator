@@ -207,12 +207,18 @@ function renderImageGrid(q) {
         <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#4f46e5' font-family='Arial' font-size='18'>${String(label).slice(0, 16)}</text>
       </svg>`
     )}`;
-    const src = opt.img ? escape(opt.img) : fallback;
-    btn.innerHTML = `<img src="${src}" alt="${escape(label)}" loading="lazy" referrerpolicy="no-referrer" /><span>${escape(label)}</span>`;
-    const imgEl = btn.querySelector("img");
-    imgEl.addEventListener("error", () => {
-      imgEl.src = fallback;
-    });
+    const imgEl = document.createElement("img");
+    imgEl.alt = label;
+    imgEl.loading = "eager";
+    imgEl.referrerPolicy = "no-referrer";
+    imgEl.onerror = () => {
+      if (imgEl.src !== fallback) imgEl.src = fallback;
+    };
+    imgEl.src = opt.img || fallback;
+    const textEl = document.createElement("span");
+    textEl.textContent = label;
+    btn.appendChild(imgEl);
+    btn.appendChild(textEl);
     btn.addEventListener("click", () => {
       grid.querySelectorAll(".image-option").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
@@ -261,12 +267,30 @@ function renderSliderWithImages(q) {
         <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#374151' font-family='Arial' font-size='14'>${text}</text>
       </svg>`
     )}`;
-  const minSrc = q.minImageSrc ? escape(q.minImageSrc) : mkFallback("min");
-  const maxSrc = q.maxImageSrc ? escape(q.maxImageSrc) : mkFallback("max");
-  rowImg.innerHTML = `<img src="${minSrc}" alt="min" class="slider-thumb-img" referrerpolicy="no-referrer" /><img src="${maxSrc}" alt="max" class="slider-thumb-img" referrerpolicy="no-referrer" />`;
-  const sliderImgs = rowImg.querySelectorAll("img");
-  if (sliderImgs[0]) sliderImgs[0].addEventListener("error", () => { sliderImgs[0].src = mkFallback("min"); });
-  if (sliderImgs[1]) sliderImgs[1].addEventListener("error", () => { sliderImgs[1].src = mkFallback("max"); });
+  const minSrc = q.minImageSrc || mkFallback("min");
+  const maxSrc = q.maxImageSrc || mkFallback("max");
+  const minImg = document.createElement("img");
+  minImg.alt = "min";
+  minImg.className = "slider-thumb-img";
+  minImg.referrerPolicy = "no-referrer";
+  minImg.loading = "eager";
+  minImg.onerror = () => {
+    const fb = mkFallback("min");
+    if (minImg.src !== fb) minImg.src = fb;
+  };
+  minImg.src = minSrc;
+  const maxImg = document.createElement("img");
+  maxImg.alt = "max";
+  maxImg.className = "slider-thumb-img";
+  maxImg.referrerPolicy = "no-referrer";
+  maxImg.loading = "eager";
+  maxImg.onerror = () => {
+    const fb = mkFallback("max");
+    if (maxImg.src !== fb) maxImg.src = fb;
+  };
+  maxImg.src = maxSrc;
+  rowImg.appendChild(minImg);
+  rowImg.appendChild(maxImg);
   const lab = document.createElement("span");
   lab.className = "quiz-label";
   lab.textContent = q.text;
